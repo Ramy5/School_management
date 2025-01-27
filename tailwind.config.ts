@@ -9,10 +9,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        mainSky: "#C3EBFA",
+        mainSkyLight: "#EDF9FD",
+        secondPurple: "#CFCEFF",
+        secondPurpleLight: "#F1F0FF",
+        thirdYellow: "#FAE27C",
+        thirdYellowLight: "#FEFCE8",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-mixins")],
 } satisfies Config;
