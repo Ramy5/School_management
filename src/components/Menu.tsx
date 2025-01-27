@@ -1,3 +1,4 @@
+import { cn } from "@/lib/cn";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -118,17 +119,21 @@ const menuItems = [
 
 const Menu = () => {
   return (
-    <div className="text-sm">
+    <div className={cn("text-sm")}>
       {menuItems.map((item) => (
         <div key={item.title}>
-          <span className="py-2 px-4 hidden lg:block text-gray-400 font-light">
+          <span
+            className={cn("py-2 px-4 hidden lg:block text-gray-400 font-light")}
+          >
             {item.title}
           </span>
           {item.items.map((subItem) => (
             <Link
               key={subItem.label}
               href={subItem.href}
-              className="flex items-center justify-center lg:justify-start gap-4 py-3 px-4 hover:pl-6 transition-all duration-300  hover:bg-gray-200"
+              className={cn(
+                "flex items-center justify-center lg:justify-start gap-4 py-3 px-4 hover:pl-6 transition-all duration-300  hover:bg-gray-200"
+              )}
             >
               <Image
                 src={subItem.icon}
@@ -136,7 +141,7 @@ const Menu = () => {
                 width={16}
                 height={16}
               />
-              <span className="hidden lg:block">{subItem.label}</span>
+              <span className={cn("hidden lg:block")}>{subItem.label}</span>
             </Link>
           ))}
         </div>
