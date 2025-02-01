@@ -1,5 +1,5 @@
-import Menu from "@/components/Menu";
-import Navbar from "@/components/Navbar";
+import Menu from "@/components/UI/Menu";
+import Navbar from "@/components/UI/Navbar";
 import { cn } from "@/lib/cn";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -35,7 +35,7 @@ export default function RootLayout({
       {/* RIGHT */}
       <div
         className={cn(
-          "w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] bg-[#F7F8FA] overflow-y-auto"
+          "w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] bg-[#F7F8FA] flex flex-col overflow-y-auto"
         )}
       >
         <Navbar />
