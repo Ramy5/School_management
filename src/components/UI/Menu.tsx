@@ -2,6 +2,7 @@ import { cn } from "@/lib/cn";
 import { menuItems, role } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { TextAnimate } from "./text-animate";
 
 const Menu = () => {
   return (
@@ -11,7 +12,9 @@ const Menu = () => {
           <span
             className={cn("py-2 px-4 hidden lg:block text-gray-400 font-light")}
           >
-            {item.title}
+            <TextAnimate animation="slideDown" by="character">
+              {item.title}
+            </TextAnimate>
           </span>
           {item.items.map((subItem) => {
             if (subItem.visible.includes(role)) {
@@ -29,7 +32,11 @@ const Menu = () => {
                     width={16}
                     height={16}
                   />
-                  <span className={cn("hidden lg:block")}>{subItem.label}</span>
+                  <span className={cn("hidden lg:block")}>
+                    <TextAnimate animation="slideRight" by="character">
+                      {subItem.label}
+                    </TextAnimate>
+                  </span>
                 </Link>
               );
             }

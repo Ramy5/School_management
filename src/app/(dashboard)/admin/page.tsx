@@ -3,13 +3,15 @@ import CountChart from "@/components/admin/Charts/CountChart";
 import FinanceChart from "@/components/admin/Charts/FinanceChart";
 import UserCard from "@/components/admin/UserCard";
 import { cn } from "@/lib/cn";
-import React from "react";
 import EventCalendar from "@/components/admin/EventCalendar";
 import Announcements from "@/components/admin/Announcements";
+import ConfettiEffect from "@/components/UI/ConfettiEffect";
 
 const AdminPage = () => {
   return (
     <div className={cn("flex flex-col p-4 gap-4 md:flex-row")}>
+      <ConfettiEffect />
+
       {/* LEFT */}
       <div className={cn("w-full lg:w-2/3 flex flex-col gap-8")}>
         {/* USER CARDS */}

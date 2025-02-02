@@ -1,11 +1,14 @@
 import Announcements from "@/components/admin/Announcements";
 import BigCalendar from "@/components/students/BigCalendar";
+import ConfettiEffect from "@/components/UI/ConfettiEffect";
 import { cn } from "@/lib/cn";
 import React from "react";
 
 const ParentPage = () => {
   return (
     <div className={cn("flex flex-1 flex-col xl:flex-row gap-4 p-4")}>
+      <ConfettiEffect />
+
       {/* LEFT */}
       <div className={cn("w-full xl:w-2/3")}>
         <div className="h-full rounded-xl p-4 bg-white">
