@@ -6,7 +6,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { Meteors } from "../UI/meteors";
 import { Particles } from "../UI/particles";
 
 type ValuePiece = Date | null;
@@ -43,7 +42,6 @@ const EventCalendar = () => {
               )}
               key={event.id}
             >
-              <Meteors number={30} />
               <div>
                 <div className={cn("flex justify-between items-center")}>
                   <h1 className={cn("font-semibold text-gray-600")}>

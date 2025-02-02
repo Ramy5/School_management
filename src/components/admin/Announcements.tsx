@@ -4,7 +4,7 @@ import React from "react";
 
 const Announcements = () => {
   return (
-    <div className={cn("bg-white p-4 rounded-xl")}>
+    <div className={cn("bg-white p-4 relative rounded-xl")}>
       <div>
         <div className={cn("flex items-center justify-between")}>
           <h1 className={cn("text-xl font-semibold my-4")}>Announcements</h1>

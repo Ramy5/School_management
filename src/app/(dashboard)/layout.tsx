@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <div className={cn("flex h-screen")}>
       {/* LEFT */}
-      <div className={cn("w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%]")}>
+      <div className={cn("w-[14%] relative md:w-[8%] lg:w-[16%] xl:w-[14%]")}>
         <Link
           href={"/"}
           className={cn(

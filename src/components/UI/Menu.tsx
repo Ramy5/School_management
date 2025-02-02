@@ -3,18 +3,10 @@ import { menuItems, role } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { TextAnimate } from "./text-animate";
-import { Particles } from "./particles";
 
 const Menu = () => {
   return (
-    <div className={cn("relative text-sm")}>
-      <Particles
-        className="absolute inset-0 z-0"
-        quantity={300}
-        ease={80}
-        color={"#7fcce7"}
-        refresh
-      />
+    <div className={cn("text-sm")}>
       {menuItems.map((item) => (
         <div key={item.title}>
           <span
