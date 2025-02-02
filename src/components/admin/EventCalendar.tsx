@@ -6,6 +6,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { Meteors } from "../UI/meteors";
+import { Particles } from "../UI/particles";
 
 type ValuePiece = Date | null;
 
@@ -16,7 +18,16 @@ const EventCalendar = () => {
 
   return (
     <div className={cn("bg-white p-4 rounded-xl")}>
-      <Calendar onChange={onChange} value={value} />
+      <div className={cn("relative")}>
+        <Calendar onChange={onChange} value={value} />
+        <Particles
+          className="absolute inset-0 z-0"
+          quantity={300}
+          ease={80}
+          color={"#4bb2d8"}
+          refresh
+        />
+      </div>
       <div>
         <div className={cn("flex items-center justify-between")}>
           <h1 className={cn("text-xl font-semibold my-4")}>Events</h1>
@@ -28,21 +39,24 @@ const EventCalendar = () => {
           return (
             <div
               className={cn(
-                "p-5 rounded-md border-2 border-gray-100 border-t-4 odd:border-t-mainSky even:border-t-secondPurple"
+                "p-5 rounded-md relative border-2 border-gray-100 border-t-4 overflow-hidden odd:border-t-mainSky even:border-t-secondPurple"
               )}
               key={event.id}
             >
-              <div className={cn("flex justify-between items-center")}>
-                <h1 className={cn("font-semibold text-gray-600")}>
-                  {event.title}
-                </h1>
-                <span className={cn("text-gray-300 text-xs")}>
-                  {event.time}
-                </span>
+              <Meteors number={30} />
+              <div>
+                <div className={cn("flex justify-between items-center")}>
+                  <h1 className={cn("font-semibold text-gray-600")}>
+                    {event.title}
+                  </h1>
+                  <span className={cn("text-gray-300 text-xs")}>
+                    {event.time}
+                  </span>
+                </div>
+                <p className={cn("text-gray-400 mt-2 text-sm")}>
+                  {event.description}
+                </p>
               </div>
-              <p className={cn("text-gray-400 mt-2 text-sm")}>
-                {event.description}
-              </p>
             </div>
           );
         })}

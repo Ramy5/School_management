@@ -2,16 +2,27 @@ import { cn } from "@/lib/cn";
 import { menuItems, role } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { TextAnimate } from "./text-animate";
+import { Particles } from "./particles";
 
 const Menu = () => {
   return (
-    <div className={cn("text-sm")}>
+    <div className={cn("relative text-sm")}>
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={300}
+        ease={80}
+        color={"#7fcce7"}
+        refresh
+      />
       {menuItems.map((item) => (
         <div key={item.title}>
           <span
             className={cn("py-2 px-4 hidden lg:block text-gray-400 font-light")}
           >
-            {item.title}
+            <TextAnimate animation="slideDown" by="character">
+              {item.title}
+            </TextAnimate>
           </span>
           {item.items.map((subItem) => {
             if (subItem.visible.includes(role)) {
@@ -29,7 +40,11 @@ const Menu = () => {
                     width={16}
                     height={16}
                   />
-                  <span className={cn("hidden lg:block")}>{subItem.label}</span>
+                  <span className={cn("hidden lg:block")}>
+                    <TextAnimate animation="slideRight" by="character">
+                      {subItem.label}
+                    </TextAnimate>
+                  </span>
                 </Link>
               );
             }

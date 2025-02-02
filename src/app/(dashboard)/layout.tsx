@@ -1,5 +1,6 @@
 import Menu from "@/components/UI/Menu";
 import Navbar from "@/components/UI/Navbar";
+import { TextAnimate } from "@/components/UI/text-animate";
 import { cn } from "@/lib/cn";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -26,7 +27,11 @@ export default function RootLayout({
           )}
         >
           <Image src="/logo.png" alt="logo" width={28} height={28} />
-          <span className={cn("hidden lg:block font-bold")}>School</span>
+          <span className={cn("hidden lg:block font-bold")}>
+            <TextAnimate animation="scaleDown" by="character">
+              School
+            </TextAnimate>
+          </span>
         </Link>
 
         <Menu />

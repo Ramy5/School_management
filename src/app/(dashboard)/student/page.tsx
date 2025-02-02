@@ -1,12 +1,15 @@
 import Announcements from "@/components/admin/Announcements";
 import EventCalendar from "@/components/admin/EventCalendar";
 import BigCalendar from "@/components/students/BigCalendar";
+import ConfettiEffect from "@/components/UI/ConfettiEffect";
 import { cn } from "@/lib/cn";
 import React from "react";
 
 const studentPage = () => {
   return (
     <div className={cn("flex flex-col xl:flex-row gap-4 p-4")}>
+      <ConfettiEffect />
+
       {/* LEFT */}
       <div className={cn("w-full xl:w-2/3")}>
         <div className="h-full rounded-xl p-4 bg-white">
