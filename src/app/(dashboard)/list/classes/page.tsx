@@ -1,10 +1,9 @@
+import FormModal from "@/components/UI/FormModal";
 import Pagination from "@/components/UI/Pagination";
 import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
 import { cn } from "@/lib/cn";
 import { classesData, IClassesData, role } from "@/lib/constants";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const columns = [
@@ -47,23 +46,21 @@ const renderClassesRow = (classes: IClassesData) => {
       <td className={cn("hidden lg:table-cell")}>{classes.supervisor}</td>
       <td>
         <div className={cn("flex items-center gap-2")}>
-          <Link href={`/list/classes/${classes.id}`}>
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-mainSky"
-              )}
-            >
-              <Image src="/edit.png" alt="edit" width={14} height={14} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-secondPurple"
-              )}
-            >
-              <Image src="/delete.png" alt="delete" width={14} height={14} />
-            </button>
+            <>
+              <FormModal
+                type="update"
+                id={classes.id}
+                data={classes}
+                tableTitle="classes"
+              />
+              <FormModal
+                type="delete"
+                id={classes.id}
+                data={classes}
+                tableTitle="classes"
+              />
+            </>
           )}
         </div>
       </td>

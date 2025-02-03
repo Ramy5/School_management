@@ -1,3 +1,4 @@
+import FormModal from "@/components/UI/FormModal";
 import Pagination from "@/components/UI/Pagination";
 import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
@@ -88,13 +89,7 @@ const renderTeacherRow = (teacher: ITeachersData) => {
             </button>
           </Link>
           {role === "admin" && (
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-secondPurple"
-              )}
-            >
-              <Image src="/delete.png" alt="delete" width={14} height={14} />
-            </button>
+            <FormModal tableTitle="teachers" type="delete" id={teacher.id} data={teacher} />
           )}
         </div>
       </td>

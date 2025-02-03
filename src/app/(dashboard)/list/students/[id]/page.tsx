@@ -3,18 +3,18 @@ import AnglePieChart from "@/components/admin/Charts/AnglePieChart";
 import BigCalendar from "@/components/students/BigCalendar";
 import { ShineBorder } from "@/components/UI/shine-border";
 import CardInfo from "@/components/UI/TeacherCardInfo";
-import { singleTeacherPageData } from "@/lib/constants";
+import { singleStudentPageData } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 
-const SingleTeacherPage = () => {
+const SingleStudentPage = () => {
   return (
     <div className={cn("flex flex-1 flex-col gap-4 p-4", "xl:flex-row")}>
       {/* LEFT */}
       <div className={cn("w-full xl:w-2/3")}>
         {/* TOP */}
-        <CardInfo {...singleTeacherPageData} />
+        <CardInfo {...singleStudentPageData} />
 
         {/* BOTTOM */}
         <ShineBorder
@@ -25,7 +25,7 @@ const SingleTeacherPage = () => {
         >
           <div className={cn("h-[800px] rounded-xl p-4 bg-white")}>
             <h1 className={cn("text-xl font-semibold")}>
-              Teacher&apos;s Schedule
+              Student&apos;s Schedule
             </h1>
             <BigCalendar />
           </div>
@@ -52,28 +52,28 @@ const SingleTeacherPage = () => {
               className={cn("mixin/shortcut", "bg-mainSkyLight")}
               href={"/"}
             >
-              Teacher&apos;s Classes
+              Student&apos;s Classes
             </Link>
             <Link
               className={cn("mixin/shortcut", "bg-secondPurpleLight")}
               href={"/"}
             >
-              Teacher&apos;s Students
+              Student&apos;s Teachers
             </Link>
             <Link
               className={cn("mixin/shortcut", "bg-thirdYellowLight")}
               href={"/"}
             >
-              Teacher&apos;s Lessons
+              Student&apos;s Lessons
             </Link>
             <Link className={cn("mixin/shortcut", "bg-pink-50")} href={"/"}>
-              Teacher&apos;s Exams
+              Student&apos;s Exams
             </Link>
             <Link
               className={cn("mixin/shortcut", "bg-mainSkyLight")}
               href={"/"}
             >
-              Teacher&apos;s Assignments
+              Student&apos;s Assignments
             </Link>
           </div>
         </ShineBorder>
@@ -86,4 +86,4 @@ const SingleTeacherPage = () => {
   );
 };
 
-export default SingleTeacherPage;
+export default SingleStudentPage;

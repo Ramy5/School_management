@@ -1,3 +1,4 @@
+import FormModal from "@/components/UI/FormModal";
 import Pagination from "@/components/UI/Pagination";
 import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
@@ -47,23 +48,21 @@ const renderAssignmentsRow = (assignments: IAssignmentsData) => {
       <td className={cn("hidden lg:table-cell")}>{assignments.dueDate}</td>
       <td>
         <div className={cn("flex items-center gap-2")}>
-          <Link href={`/list/assignments/${assignments.id}`}>
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-mainSky"
-              )}
-            >
-              <Image src="/edit.png" alt="edit" width={14} height={14} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-secondPurple"
-              )}
-            >
-              <Image src="/delete.png" alt="delete" width={14} height={14} />
-            </button>
+            <>
+              <FormModal
+                tableTitle="assignments"
+                type="update"
+                id={assignments.id}
+                data={assignments}
+              />
+              <FormModal
+                tableTitle="assignments"
+                type="delete"
+                id={assignments.id}
+                data={assignments}
+              />
+            </>
           )}
         </div>
       </td>

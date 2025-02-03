@@ -1,3 +1,90 @@
+export interface ICardsInfo {
+  image: string;
+  title: string;
+  desc: string;
+}
+
+export interface ISinglePageData {
+  infoData: {
+    imageUrl: string;
+    name: string;
+    desc: string;
+    blood: string;
+    date: string;
+    email: string;
+    phone: string;
+  };
+  cardsInfo: ICardsInfo[];
+}
+
+export const singleTeacherPageData: ISinglePageData = {
+  infoData: {
+    imageUrl: "/avatar.png",
+    name: "John Doe",
+    desc: "Dedicated educator with a passion for teaching and student development.",
+    blood: "A+",
+    date: "January 2025",
+    email: "johndoe@example.com",
+    phone: "+123456789",
+  },
+  cardsInfo: [
+    {
+      image: "/singleAttendance.png",
+      title: "90%",
+      desc: "Attendance",
+    },
+    {
+      image: "/singleBranch.png",
+      title: "2",
+      desc: "Branches",
+    },
+    {
+      image: "/singleLesson.png",
+      title: "6",
+      desc: "Lessons",
+    },
+    {
+      image: "/singleClass.png",
+      title: "4",
+      desc: "Classes",
+    },
+  ],
+};
+
+export const singleStudentPageData: ISinglePageData = {
+  infoData: {
+    imageUrl: "/avatar.png",
+    name: "Jane Smith",
+    desc: "Motivated student with a strong interest in learning and personal growth.",
+    blood: "B+",
+    date: "Enrolled: September 2023",
+    email: "janesmith@example.com",
+    phone: "+987654321",
+  },
+  cardsInfo: [
+    {
+      image: "/singleAttendance.png",
+      title: "95%",
+      desc: "Attendance",
+    },
+    {
+      image: "/singleBranch.png",
+      title: "6th",
+      desc: "Grade",
+    },
+    {
+      image: "/singleLesson.png",
+      title: "10",
+      desc: "Lessons",
+    },
+    {
+      image: "/singleClass.png",
+      title: "6",
+      desc: "Class",
+    },
+  ],
+};
+
 export type TMenuItem = {
   title: string;
   items: {
@@ -248,6 +335,17 @@ export const financeChart: TFinanceChart[] = [
     income: 3490,
     expense: 4300,
   },
+];
+
+export type TAnglePie = {
+  name: string;
+  value: number;
+  fill: string;
+};
+
+export const AnglePie: TAnglePie[] = [
+  { name: "Group A", value: 92, fill: "#C3EBFA" },
+  { name: "Group B", value: 8, fill: "#FAE27C" },
 ];
 
 export type TEvent = {

@@ -1,10 +1,9 @@
+import FormModal from "@/components/UI/FormModal";
 import Pagination from "@/components/UI/Pagination";
 import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
 import { cn } from "@/lib/cn";
 import { ISubjectsData, role, subjectsData } from "@/lib/constants";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const columns = [
@@ -37,23 +36,21 @@ const renderSubjectRow = (subject: ISubjectsData) => {
       </td>
       <td>
         <div className={cn("flex items-center gap-2")}>
-          <Link href={`/list/subjects/${subject.id}`}>
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-mainSky"
-              )}
-            >
-              <Image src="/edit.png" alt="edit" width={14} height={14} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-secondPurple"
-              )}
-            >
-              <Image src="/delete.png" alt="delete" width={14} height={14} />
-            </button>
+            <>
+              <FormModal
+                tableTitle="subjects"
+                type="update"
+                id={subject.id}
+                data={subject}
+              />
+              <FormModal
+                tableTitle="subjects"
+                type="delete"
+                id={subject.id}
+                data={subject}
+              />
+            </>
           )}
         </div>
       </td>

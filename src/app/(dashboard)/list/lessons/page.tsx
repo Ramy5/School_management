@@ -1,10 +1,9 @@
+import FormModal from "@/components/UI/FormModal";
 import Pagination from "@/components/UI/Pagination";
 import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
 import { cn } from "@/lib/cn";
 import { ILessonsData, lessonsData, role } from "@/lib/constants";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const columns = [
@@ -41,23 +40,21 @@ const renderLesSonsRow = (lessons: ILessonsData) => {
       <td className={cn("hidden md:table-cell")}>{lessons.teacher}</td>
       <td>
         <div className={cn("flex items-center gap-2")}>
-          <Link href={`/list/lessons/${lessons.id}`}>
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-mainSky"
-              )}
-            >
-              <Image src="/edit.png" alt="edit" width={14} height={14} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-secondPurple"
-              )}
-            >
-              <Image src="/delete.png" alt="delete" width={14} height={14} />
-            </button>
+            <>
+              <FormModal
+                tableTitle="lessons"
+                type="update"
+                id={lessons.id}
+                data={lessons}
+              />
+              <FormModal
+                tableTitle="lessons"
+                type="delete"
+                id={lessons.id}
+                data={lessons}
+              />
+            </>
           )}
         </div>
       </td>

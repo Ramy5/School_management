@@ -1,10 +1,9 @@
+import FormModal from "@/components/UI/FormModal";
 import Pagination from "@/components/UI/Pagination";
 import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
 import { cn } from "@/lib/cn";
 import { eventsData, IAnnouncements, role } from "@/lib/constants";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const columns = [
@@ -41,23 +40,21 @@ const renderAnnouncementsRow = (announcements: IAnnouncements) => {
       <td className={cn("hidden md:table-cell")}>{announcements.date}</td>
       <td>
         <div className={cn("flex items-center gap-2")}>
-          <Link href={`/list/announcements/${announcements.id}`}>
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-mainSky"
-              )}
-            >
-              <Image src="/edit.png" alt="edit" width={14} height={14} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-secondPurple"
-              )}
-            >
-              <Image src="/delete.png" alt="delete" width={14} height={14} />
-            </button>
+            <>
+              <FormModal
+                tableTitle="announcements"
+                type="update"
+                id={announcements.id}
+                data={announcements}
+              />
+              <FormModal
+                tableTitle="announcements"
+                type="delete"
+                id={announcements.id}
+                data={announcements}
+              />
+            </>
           )}
         </div>
       </td>

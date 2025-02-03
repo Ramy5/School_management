@@ -1,10 +1,16 @@
 import { cn } from "@/lib/cn";
 import { announcements } from "@/lib/constants";
 import React from "react";
+import { ShineBorder } from "../UI/shine-border";
 
 const Announcements = () => {
   return (
-    <div className={cn("bg-white p-4 relative rounded-xl")}>
+    <ShineBorder
+      className={cn(
+        "!w-full !h-auto !place-items-stretch !min-h-0 !min-w-0 bg-white !p-4 relative rounded-xl"
+      )}
+      color={["#43beeb", "#7876f5", "#e9ca40"]}
+    >
       <div>
         <div className={cn("flex items-center justify-between")}>
           <h1 className={cn("text-xl font-semibold my-4")}>Announcements</h1>
@@ -40,7 +46,7 @@ const Announcements = () => {
           );
         })}
       </div>
-    </div>
+    </ShineBorder>
   );
 };
 
