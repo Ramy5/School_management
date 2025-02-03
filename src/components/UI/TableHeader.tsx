@@ -3,6 +3,7 @@ import TableSearch from "./TableSearch";
 import { cn } from "@/lib/cn";
 import Image from "next/image";
 import { role } from "@/lib/constants";
+import FormModal from "./FormModal";
 
 const TableHeader = ({ title }: { title: string }) => {
   return (
@@ -31,9 +32,7 @@ const TableHeader = ({ title }: { title: string }) => {
             <Image src={"/sort.png"} alt="filter" width={14} height={14} />
           </button>
           {role === "admin" && (
-            <button className={cn("mixin")}>
-              <Image src={"/plus.png"} alt="filter" width={14} height={14} />
-            </button>
+            <FormModal type="create" tableTitle={"teachers"} />
           )}
         </div>
       </div>

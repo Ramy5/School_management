@@ -1,10 +1,9 @@
+import FormModal from "@/components/UI/FormModal";
 import Pagination from "@/components/UI/Pagination";
 import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
 import { cn } from "@/lib/cn";
 import { IParentsData, parentsData, role } from "@/lib/constants";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const columns = [
@@ -52,23 +51,21 @@ const renderParentRow = (parent: IParentsData) => {
       <td className={cn("hidden lg:table-cell")}>{parent.address}</td>
       <td>
         <div className={cn("flex items-center gap-2")}>
-          <Link href={`/list/parents/${parent.id}`}>
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-mainSky"
-              )}
-            >
-              <Image src="/edit.png" alt="edit" width={14} height={14} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-secondPurple"
-              )}
-            >
-              <Image src="/delete.png" alt="delete" width={14} height={14} />
-            </button>
+            <>
+              <FormModal
+                tableTitle="parents"
+                type="update"
+                id={parent.id}
+                data={parent}
+              />
+              <FormModal
+                tableTitle="parents"
+                type="delete"
+                id={parent.id}
+                data={parent}
+              />
+            </>
           )}
         </div>
       </td>

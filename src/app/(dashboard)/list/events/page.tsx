@@ -1,10 +1,9 @@
+import FormModal from "@/components/UI/FormModal";
 import Pagination from "@/components/UI/Pagination";
 import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
 import { cn } from "@/lib/cn";
 import { eventsData, IEventsData, role } from "@/lib/constants";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const columns = [
@@ -53,23 +52,21 @@ const renderEventsRow = (events: IEventsData) => {
       <td className={cn("hidden lg:table-cell")}>{events.endTime}</td>
       <td>
         <div className={cn("flex items-center gap-2")}>
-          <Link href={`/list/events/${events.id}`}>
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-mainSky"
-              )}
-            >
-              <Image src="/edit.png" alt="edit" width={14} height={14} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              className={cn(
-                "w-7 h-7 flex items-center justify-center rounded-full bg-secondPurple"
-              )}
-            >
-              <Image src="/delete.png" alt="delete" width={14} height={14} />
-            </button>
+            <>
+              <FormModal
+                tableTitle="events"
+                type="update"
+                id={events.id}
+                data={events}
+              />
+              <FormModal
+                tableTitle="events"
+                type="delete"
+                id={events.id}
+                data={events}
+              />
+            </>
           )}
         </div>
       </td>

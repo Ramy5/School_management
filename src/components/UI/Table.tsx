@@ -19,6 +19,7 @@ interface IColumns {
   className?: string;
 }
 
+// REFACTOR: use generics
 type TTeacherRenderRow = (item: ITeachersData) => React.ReactNode;
 type TStudentRenderRow = (item: IStudentsData) => React.ReactNode;
 type TParentRenderRow = (item: IParentsData) => React.ReactNode;
