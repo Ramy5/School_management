@@ -4,8 +4,6 @@ import Table from "@/components/UI/Table";
 import TableHeader from "@/components/UI/TableHeader";
 import { cn } from "@/lib/cn";
 import { assignmentsData, IAssignmentsData, role } from "@/lib/constants";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const columns = [
@@ -74,7 +72,7 @@ const AssignmentsListPage = () => {
   return (
     <div className={cn("bg-white p-4  rounded-xl flex-1 m-4 mt-0")}>
       {/* HEAD */}
-      <TableHeader title="All Assignments" />
+      <TableHeader title="All Assignments" tableTitle="assignments" />
 
       {/* EXAMS LIST */}
       <Table

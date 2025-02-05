@@ -89,7 +89,12 @@ const renderTeacherRow = (teacher: ITeachersData) => {
             </button>
           </Link>
           {role === "admin" && (
-            <FormModal tableTitle="teachers" type="delete" id={teacher.id} data={teacher} />
+            <FormModal
+              tableTitle="teachers"
+              type="delete"
+              id={teacher.id}
+              data={teacher}
+            />
           )}
         </div>
       </td>
@@ -99,20 +104,22 @@ const renderTeacherRow = (teacher: ITeachersData) => {
 
 const TeachersListPage = () => {
   return (
-    <div className={cn("bg-white p-4  rounded-xl flex-1 m-4 mt-0")}>
-      {/* HEAD */}
-      <TableHeader title="All Teachers" />
+    <>
+      <div className={cn("bg-white p-4  rounded-xl flex-1 m-4 mt-0")}>
+        {/* HEAD */}
+        <TableHeader title="All Teachers" tableTitle="teachers" />
 
-      {/* TEACHERS LIST */}
-      <Table
-        columns={columns}
-        data={teachersData}
-        renderRow={renderTeacherRow}
-      />
+        {/* TEACHERS LIST */}
+        <Table
+          columns={columns}
+          data={teachersData}
+          renderRow={renderTeacherRow}
+        />
 
-      {/* PAGINATION */}
-      <Pagination />
-    </div>
+        {/* PAGINATION */}
+        <Pagination />
+      </div>
+    </>
   );
 };
 

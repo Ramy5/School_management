@@ -77,7 +77,7 @@ const ParentsListPage = () => {
   return (
     <div className={cn("bg-white p-4  rounded-xl flex-1 m-4 mt-0")}>
       {/* HEAD */}
-      <TableHeader title="All Parents" />
+      <TableHeader title="All Parents" tableTitle="parents" />
 
       {/* PARENTS LIST */}
       <Table columns={columns} data={parentsData} renderRow={renderParentRow} />

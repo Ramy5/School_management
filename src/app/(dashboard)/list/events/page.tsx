@@ -78,7 +78,7 @@ const EventsListPage = () => {
   return (
     <div className={cn("bg-white p-4  rounded-xl flex-1 m-4 mt-0")}>
       {/* HEAD */}
-      <TableHeader title="All Events" />
+      <TableHeader title="All Events" tableTitle="events" />
 
       {/* EVENTS LIST */}
       <Table columns={columns} data={eventsData} renderRow={renderEventsRow} />
