@@ -10,12 +10,12 @@ import {
 } from "@/Schema/CreateTeacherSchema";
 import Image from "next/image";
 
-interface ITeacherFormProps {
+interface IStudentFormProps {
   type: "create" | "update";
   data?: TCreateTeacherSchemaInputs;
 }
 
-const TeacherForm = ({ type, data }: ITeacherFormProps) => {
+const StudentForm = ({ type, data }: IStudentFormProps) => {
   const {
     register,
     handleSubmit,
@@ -30,7 +30,7 @@ const TeacherForm = ({ type, data }: ITeacherFormProps) => {
 
   return (
     <form className={cn("flex flex-col gap-8")} onSubmit={onSubmit}>
-      <h1 className={cn("text-xl font-semibold")}>Create a new teacher</h1>
+      <h1 className={cn("text-xl font-semibold")}>Create a new student</h1>
       <span className={cn("text-xs font-medium text-gray-400")}>
         Authentication Information
       </span>
@@ -166,4 +166,4 @@ const TeacherForm = ({ type, data }: ITeacherFormProps) => {
   );
 };
 
-export default TeacherForm;
+export default StudentForm;

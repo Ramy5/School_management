@@ -72,7 +72,7 @@ const ClassesListPage = () => {
   return (
     <div className={cn("bg-white p-4  rounded-xl flex-1 m-4 mt-0")}>
       {/* HEAD */}
-      <TableHeader title="All Classes" />
+      <TableHeader title="All Classes" tableTitle="classes" />
 
       {/* CLASSES LIST */}
       <Table

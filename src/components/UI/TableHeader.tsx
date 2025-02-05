@@ -3,9 +3,15 @@ import TableSearch from "./TableSearch";
 import { cn } from "@/lib/cn";
 import Image from "next/image";
 import { role } from "@/lib/constants";
-import FormModal from "./FormModal";
+import FormModal, { TTableTitle } from "./FormModal";
 
-const TableHeader = ({ title }: { title: string }) => {
+const TableHeader = ({
+  title,
+  tableTitle,
+}: {
+  title: string;
+  tableTitle: TTableTitle;
+}) => {
   return (
     <div className={cn("flex items-center justify-between")}>
       <h1 className={cn("hidden text-lg font-semibold", "md:block")}>
@@ -32,7 +38,7 @@ const TableHeader = ({ title }: { title: string }) => {
             <Image src={"/sort.png"} alt="filter" width={14} height={14} />
           </button>
           {role === "admin" && (
-            <FormModal type="create" tableTitle={"teachers"} />
+            <FormModal type="create" tableTitle={tableTitle} />
           )}
         </div>
       </div>

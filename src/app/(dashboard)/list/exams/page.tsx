@@ -72,7 +72,7 @@ const ExamsListPage = () => {
   return (
     <div className={cn("bg-white p-4  rounded-xl flex-1 m-4 mt-0")}>
       {/* HEAD */}
-      <TableHeader title="All Exams" />
+      <TableHeader title="All Exams" tableTitle="exams" />
 
       {/* EXAMS LIST */}
       <Table columns={columns} data={examsData} renderRow={renderExamsRow} />

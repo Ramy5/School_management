@@ -2,9 +2,34 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useState } from "react";
+import { JSX, useState } from "react";
+import dynamic from "next/dynamic";
+import { TCreateTeacherSchemaInputs } from "@/Schema/CreateTeacherSchema";
 
-type TTableTitle =
+const TeacherForm = dynamic(() => import("../teachers/TeacherForm"), {
+  loading: () => <p>Loading...</p>,
+});
+const StudentForm = dynamic(() => import("../students/StudentForm"), {
+  loading: () => <p>Loading...</p>,
+});
+
+type TFormType = {
+  [key: string]: (
+    type: "create" | "update",
+    data: TCreateTeacherSchemaInputs
+  ) => JSX.Element;
+};
+
+const formType: TFormType = {
+  teachers: (type: "create" | "update", data: TCreateTeacherSchemaInputs) => (
+    <TeacherForm type={type} data={data} />
+  ),
+  students: (type: "create" | "update", data: TCreateTeacherSchemaInputs) => (
+    <StudentForm type={type} data={data} />
+  ),
+};
+
+export type TTableTitle =
   | "teachers"
   | "parents"
   | "students"
@@ -18,21 +43,15 @@ type TTableTitle =
   | "announcements"
   | "events";
 
-interface IFormModalCreate {
-  type: "create";
+interface IFormModal {
+  type: "create" | "update" | "delete";
   tableTitle: TTableTitle;
-}
-
-interface IFormModalUpdateAndDelete {
-  type: "update" | "delete";
   id: number;
-  data: unknown;
-  tableTitle: TTableTitle;
+  data: TCreateTeacherSchemaInputs;
 }
 
-type IFormModalProps = IFormModalCreate | IFormModalUpdateAndDelete;
-
-const FormModal = ({ type, id, data, tableTitle }: IFormModalProps) => {
+const FormModal = ({ type, id, data, tableTitle }: IFormModal) => {
+  console.log("🚀 ~ FormModal ~ id:", id);
   const [isOpen, setIsOpen] = useState(false);
 
   const size = type === "create" ? "w-8 h-8" : "w-7 h-7";
@@ -43,24 +62,30 @@ const FormModal = ({ type, id, data, tableTitle }: IFormModalProps) => {
       ? "bg-mainSky"
       : "bg-secondPurple";
 
-  const Form = () => {
-    return type === "delete" ? (
-      <form action={""} className={cn("flex p-4 flex-col gap-4")}>
-        <span className={cn("text-center font-medium")}>
-          All data will be lost. Are you sure you want to delete this{" "}
-          {tableTitle}?
-        </span>
-        <button
-          className={cn(
-            "bg-red-700 text-white py-2 px-4 rounded-md border-none w-max self-center"
-          )}
-        >
-          Delete
-        </button>
-      </form>
-    ) : (
-      "Create or Update form"
-    );
+  const renderForm = () => {
+    if (type === "delete") {
+      return (
+        <form action={""} className={cn("flex p-4 flex-col gap-4")}>
+          <span className={cn("text-center font-medium")}>
+            All data will be lost. Are you sure you want to delete this{" "}
+            {tableTitle}?
+          </span>
+          <button
+            className={cn(
+              "bg-red-700 text-white py-2 px-4 rounded-md border-none w-max self-center"
+            )}
+          >
+            Delete
+          </button>
+        </form>
+      );
+    } else if (type === "update" || type === "create") {
+      const FormComponent = formType[tableTitle];
+      if (FormComponent) {
+        return FormComponent(type, data);
+      }
+    }
+    return "Form not found";
   };
 
   return (
@@ -95,8 +120,8 @@ const FormModal = ({ type, id, data, tableTitle }: IFormModalProps) => {
               <Image src={"/close.png"} alt="close" width={14} height={14} />
             </div>
 
-            {/* FORM FOR DELETE */}
-            <Form />
+            {/* FORM FOR DELETE, UPDATE, OR CREATE */}
+            {renderForm()}
           </div>
         </div>
       )}
