@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@prisma/client": "^6.3.1",
+    "@prisma/extension-pulse": "^1.2.0",
     "@radix-ui/react-slot": "^1.1.1",
     "@types/canvas-confetti": "^1.9.0",
     "@types/react-big-calendar": "^1.16.1",
@@ -40,6 +42,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",
+    "prisma": "^6.3.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "vitest": "^3.0.5"
