@@ -12,3 +12,118 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum UserSex {
+  MALE
+  FEMALE
+}
+
+model Admin {
+  id        String @id
+  username  String @unique
+}
+
+model Student {
+  id        String @id
+  username  String @unique
+  name      String
+  surname   String
+  email     String? @unique
+  phone     String?
+  address   String
+  img       String?
+  bloodType String
+  enum      UserSex
+  createdAt DateTime @default(now())
+  parentId  String
+  parent Parent @relation(fields: [parentId], references: [id])
+  classId   Int
+  class Class @relation(fields: [classId], references: [id])
+}
+
+model Teacher {
+  id        String @id
+  username  String @unique
+  name      String
+  surname   String
+  email     String? @unique
+  phone     String?
+  address   String
+  img       String?
+  bloodType String
+  enum      UserSex
+  createdAt DateTime @default(now())
+  subject   Subject[]
+  lessons   Lesson[]
+  classes   Class[]
+}
+
+model Parent {
+  id        String @id
+  username  String @unique
+  name      String
+  surname   String
+  email     String? @unique
+  phone     String?
+  address   String
+  createdAt DateTime @default(now())
+  students  Student[]
+}
+
+model Grade {}
+
+model Class {
+  id        Int @id @default(autoincrement())
+  name      String @unique
+  capacity  Int
+
+  lessons   Lesson[]
+  student   Student[]
+  superVisorId String
+  superVisor   Teacher @relation(fields: [superVisorId], references: [id])
+}
+
+model Subject {
+  id        Int @id @default(autoincrement())
+  name      String @unique
+  teachers  Teacher[]
+  lessons   Lesson[]
+}
+
+model Result {}
+
+model Assignment {}
+
+model Attendance {}
+
+model Exam {}
+
+model Event {}
+
+enum Day {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+}
+
+model Lesson {
+  id        Int @id @default(autoincrement())
+  name      String
+  teacher   Teacher
+  day       Day
+  startTime DateTime
+  endTime   DateTime
+
+  subjectId Int
+  subject   Subject @relation(fields: [subjectId], references: [id])
+
+  classId   Int
+  class     Class @relation(fields: [classId], references: [id])
+
+  teacherId String
+  teacher   Teacher @relation(fields: [teacherId], references: [id])
+}
+
+model Announcement {}
